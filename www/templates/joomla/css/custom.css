@@ -47,14 +47,6 @@ a.button.bigorange {
     text-transform: uppercase;
 }
 
-/* Supervisor Course */
-.supervisorcourse ul {
-  list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAC3UlEQVRIia3UbU9TZxjAcT7JPuE0W7ZlWTIFQZjO4IRKNHOoiwMVEBDwAaFQUIFNik6ymXXg6enDoay05z4P7TmHXu1/L1hNTM+gWK/k//K6f7ne3G1t/83lBZ9mikQ9IlGP/qhX7pvzPmlrdiJRjx1XmmporczVRZdLT0rlvukmkf75MoYrbOwGRzb1uszkK48bT216H7rNIX1PyhiOEM8FRzaf8Lix7LKZ32dwyeLCtH008sNsCcMR1nMBX90sHto3t4oMxhw0VWEzv8/lWcV3k6rccRhy8bFL1hFe7AR8eT3Pll3lDyVsFITVvBDbrTBrVNg0q8xt+VyL2mQdQVMVNnYCLs6YdE+ov/8X6H14APy2E/DFTzly5RrpUpVtu8qfSnhZFF4WhEoNXmk+Py/ZGI68Q+JGQO9Uke4xMxy58MAh4wi/GgGf/5jB3odiUGPXq5EpVfnHq5HzqgA8irsMP7OJvSkzHXeZirtMrLvMvC7RNVqgc7TYiHw/Y5OxhTUj4LMrOpUq+AJO5X0o7VYZeKzof2Rya83h5qrD4IrD19cNri0ozo8XOD28RwNwfuoAWM0GnBzYRjN+J22s8zazwYtUgiuJ4NBODmyzmg3I2ELPhGoEzt23SNvCSjbgRCSBn33wXl5uEcf8C1ttodwCyhfMoPauE5EEK9mAtC2cu281Aj2TirQtPM8EfNr35oN6njkAeiZDLugeV6Qs4VnGb6mUJXSPhwBn75mkLOFp2m+plCWcvWc2Al1jJrolLKd9ltM+x536nm4JXWMhQOdoEd0SllJ+S+mW0DlaDAFGiuhKiKV8YqnjX1Df05XQORICnBkpkFTCou63VFIJZ0YKjUDH3QNgQfdZ0I9/QX0vqYSOuyFA+50CmhKiSb+lNCW03wkDbu+hKWE+6TOfPP4F9T1NCe23Q/6i08N7aKYwp/ktpZkS/tmdGtrjrSkfpVNDIcC3v+T5mNXf/RdGBEywsVDMyAAAAABJRU5ErkJggg==);
-}
-.supervisorcourse li {
-  line-height: 35px;
-}
-
 /* CustomField Image Gallery */
 .gallery .image {
     width: 30%;
