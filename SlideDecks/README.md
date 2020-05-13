@@ -1,4 +1,4 @@
-# Joomla! Certification Program - Slide decks & Materials
+# Joomla! Certification Program - Slide Decks
 
 ## Menu Structure
 https://github.com/denehyg/reveal.js-menu
