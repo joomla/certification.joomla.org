@@ -1,12 +1,9 @@
 # Joomla! Certification Program - Slide decks & Materials
 
-## Available Materials
-- [Exam Supervisor Presentation](https://github.com/joomla/certification-slidedecks/tree/master/ExamSupervisor)
-
-### Menu Structure
+## Menu Structure
 https://github.com/denehyg/reveal.js-menu
 
-#### Keyboard keys
+### Keyboard keys
 The default keyboard shortcuts are:
 
 - <kbd>N</kbd>, <kbd>SPACE</kbd>:	Next slide
