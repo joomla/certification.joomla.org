@@ -1,35 +1,32 @@
 <?php
 /**
- * @package    DPCalendar
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2019 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @package   DPCalendar
+ * @author    Digital Peak http://www.digital-peak.com
+ * @copyright Copyright (C) 2007 - 2020 Digital Peak. All rights reserved.
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 defined('_JEXEC') or die();
 
-$params = $this->params;
-if ($params->get('show_selection', 1) == 2) {
+if ($this->params->get('show_selection', 1) == 2) {
 	return;
 }
 ?>
-<div class="com-dpcalendar-calendar__list com-dpcalendar-calendar__list_<?php echo $params->get('show_selection', 1) == 3 ? '' : 'hidden'; ?>">
+<div class="com-dpcalendar-calendar__list com-dpcalendar-calendar__list_<?php echo $this->params->get('show_selection', 1) == 3 ? '' : 'hidden'; ?>">
 	<?php foreach ($this->doNotListCalendars as $calendar) { ?>
-		<?php $value = html_entity_decode(
-			JRoute::_(
-				'index.php?option=com_dpcalendar&view=events&format=raw&limit=0' .
-				'&ids=' . $calendar->id .
-				'&my=' . $params->get('show_my_only_calendar', '0') .
-				'&Itemid=' . $this->input->getInt('Itemid', 0)
-			)
-		); ?>
-		<dl class="com-dpcalendar-calendar__calendar-description dp-description">
+		<?php $style = 'background-color: #' . $calendar->color . ';'; ?>
+		<?php $style .= 'border-color: #' . $calendar->color . ';'; ?>
+		<?php $style .= 'color: #' . \DPCalendar\Helper\DPCalendarHelper::getOppositeBWColor($calendar->color); ?>
+		<dl class="com-dpcalendar-calendar__calendar-description dp-description dp-calendar">
 			<dt class="dp-description__label">
-				<label for="cal-<?php echo $calendar->id; ?>">
-					<input type="checkbox" name="<?php echo $calendar->id; ?>" value="<?php echo $value; ?>" id="cal-<?php echo $calendar->id; ?>"
-						   class="dp-input dp-input-checkbox">
-					<span style="color: #<?php echo $calendar->color; ?>">
+				<input type="checkbox" name="cal-<?php echo $calendar->id; ?>" value="<?php echo $calendar->id; ?>"
+					   id="cal-<?php echo $calendar->id; ?>" class="dp-input dp-input-checkbox" style="<?php echo $style; ?>">
+				<label for="cal-<?php echo $calendar->id; ?>" class="dp-input-label">
+					<div class="dp-calendar__title">
 						<?php echo str_pad(' ' . $calendar->title, strlen(' ' . $calendar->title) + $calendar->level - 1, '-', STR_PAD_LEFT); ?>
-						<?php if ((!empty($calendar->icalurl) || !$calendar->external) && $params->get('show_export_links', 1)) { ?>
+					</div>
+					<div class="dp-calendar__event-text"><?php echo $calendar->event->afterDisplayTitle; ?></div>
+					<div class="dp-calendar__links">
+						<?php if ((!empty($calendar->icalurl) || !$calendar->external) && $this->params->get('show_export_links', 1)) { ?>
 							<a href="<?php echo str_replace(['http://', 'https://'], 'webcal://',
 								$this->router->getCalendarIcalRoute($calendar->id)); ?>"
 							   class="dp-link dp-link-subscribe">
@@ -50,20 +47,14 @@ if ($params->get('show_selection', 1) == 2) {
 								</a>
 							<?php } ?>
 						<?php } ?>
-					</span>
+					</div>
 				</label>
 			</dt>
-			<dl class="dp-description__description"><?php echo $calendar->description; ?></dl>
+			<dl class="dp-description__description">
+				<div class="dp-calendar__event-text"><?php echo $calendar->event->beforeDisplayContent; ?></div>
+				<div class="dp-calendar__description"><?php echo $calendar->description; ?></div>
+				<div class="dp-calendar__event-text"><?php echo $calendar->event->afterDisplayContent; ?></div>
+			</dl>
 		</dl>
 	<?php } ?>
-</div>
-<div class="com-dpcalendar-calendar__toggle dp-toggle">
-	<div class="dp-toggle__up dp-toggle_<?php echo $params->get('show_selection', 1) == 3 ? '' : 'hidden'; ?>"
-		 data-direction="up">
-		<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::UP]); ?>
-	</div>
-	<div class="dp-toggle__down dp-toggle_<?php echo $params->get('show_selection', 1) == 3 ? 'hidden' : ''; ?>"
-		 data-direction="down">
-		<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::DOWN]); ?>
-	</div>
 </div>

@@ -1,9 +1,9 @@
 <?php
 /**
- * @package    DPCalendar
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2019 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @package   DPCalendar
+ * @author    Digital Peak http://www.digital-peak.com
+ * @copyright Copyright (C) 2007 - 2020 Digital Peak. All rights reserved.
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 defined('_JEXEC') or die();
 
@@ -20,50 +20,28 @@ defined('_JEXEC') or die();
 					<?php echo $location->title; ?>
 				</a>
 			</h2>
-			<div class="dp-location__buttons dp-button-bar">
-				<button type="button" class="dp-button dp-button-action dp-button-map-site" data-target="new"
-						data-href="<?php echo \DPCalendar\Helper\Location::getMapLink($location); ?>">
-					<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::MAP]); ?>
-					<?php echo $this->translate('COM_DPCALENDAR_VIEW_LOCATION_MAP_SITE_LINK'); ?>
-					<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::EXTERNAL]); ?>
-				</button>
-				<button type="button" class="dp-button dp-button-action dp-button-map-directions" data-target="new"
-						data-href="<?php echo \DPCalendar\Helper\Location::getDirectionsLink($location); ?>">
-					<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::DIRECTIONS]); ?>
-					<?php echo $this->translate('COM_DPCALENDAR_VIEW_LOCATION_MAP_DIRECTIONS_LINK'); ?>
-					<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::EXTERNAL]); ?>
-				</button>
-			</div>
+			<?php if ($this->params->get('map_provider', 'openstreetmap') != 'none') { ?>
+				<div class="dp-location__buttons dp-button-bar">
+					<button type="button" class="dp-button dp-button-action dp-button-map-site" data-target="new"
+							data-href="<?php echo \DPCalendar\Helper\Location::getMapLink($location); ?>">
+						<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::MAP]); ?>
+						<?php echo $this->translate('COM_DPCALENDAR_VIEW_LOCATION_MAP_SITE_LINK'); ?>
+						<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::EXTERNAL]); ?>
+					</button>
+					<button type="button" class="dp-button dp-button-action dp-button-map-directions" data-target="new"
+							data-href="<?php echo \DPCalendar\Helper\Location::getDirectionsLink($location); ?>">
+						<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::DIRECTIONS]); ?>
+						<?php echo $this->translate('COM_DPCALENDAR_VIEW_LOCATION_MAP_DIRECTIONS_LINK'); ?>
+						<?php echo $this->layoutHelper->renderLayout('block.icon', ['icon' => \DPCalendar\HTML\Block\Icon::EXTERNAL]); ?>
+					</button>
+				</div>
+			<?php } ?>
 			<div class="dp-location__details"
 				 data-latitude="<?php echo $location->latitude; ?>"
 				 data-longitude="<?php echo $location->longitude; ?>"
 				 data-title="<?php echo $location->title; ?>"
 				 data-description="<?php echo $this->escape($description); ?>"
 				 data-color="<?php echo $location->color; ?>">
-				<?php if ($location->country) { ?>
-					<dl class="dp-description">
-						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_COUNTRY_LABEL'); ?></dt>
-						<dd class="dp-description__description dp-location__country"><?php echo $location->country; ?></dd>
-					</dl>
-				<?php } ?>
-				<?php if ($location->province) { ?>
-					<dl class="dp-description">
-						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_PROVINCE_LABEL'); ?></dt>
-						<dd class="dp-description__description dp-location__province"><?php echo $location->province; ?></dd>
-					</dl>
-				<?php } ?>
-				<?php if ($location->city) { ?>
-					<dl class="dp-description">
-						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_CITY_LABEL'); ?></dt>
-						<dd class="dp-description__description dp-location__city">
-							<?php if ($this->params->get('location_format', 'format_us') == 'format_us') { ?>
-								<?php echo $location->city . ' ' . $location->zip; ?>
-							<?php } else { ?>
-								<?php echo $location->zip . ' ' . $location->city; ?>
-							<?php } ?>
-						</dd>
-					</dl>
-				<?php } ?>
 				<?php if ($location->street) { ?>
 					<dl class="dp-description">
 						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_STREET_LABEL'); ?></dt>
@@ -76,6 +54,36 @@ defined('_JEXEC') or die();
 						</dd>
 					</dl>
 				<?php } ?>
+				<?php if ($location->city) { ?>
+					<dl class="dp-description">
+						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_CITY_LABEL'); ?></dt>
+						<dd class="dp-description__description dp-location__city">
+							<?php if ($this->params->get('location_format', 'format_us') == 'format_us') { ?>
+								<?php echo $location->city; ?>
+							<?php } else { ?>
+								<?php echo $location->zip . ' ' . $location->city; ?>
+							<?php } ?>
+						</dd>
+					</dl>
+				<?php } ?>
+				<?php if ($location->province) { ?>
+					<dl class="dp-description">
+						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_PROVINCE_LABEL'); ?></dt>
+						<dd class="dp-description__description dp-location__province">
+							<?php if ($this->params->get('location_format', 'format_us') == 'format_us') { ?>
+								<?php echo $location->province . ' ' . $location->zip; ?>
+							<?php } else { ?>
+								<?php echo $location->province; ?>
+							<?php } ?>
+						</dd>
+					</dl>
+				<?php } ?>
+				<?php if ($location->country) { ?>
+					<dl class="dp-description">
+						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION_FIELD_COUNTRY_LABEL'); ?></dt>
+						<dd class="dp-description__description dp-location__country"><?php echo $location->country; ?></dd>
+					</dl>
+				<?php } ?>
 				<?php if ($location->rooms) { ?>
 					<dl class="dp-description">
 						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_ROOMS'); ?></dt>
@@ -86,19 +94,20 @@ defined('_JEXEC') or die();
 						</dd>
 					</dl>
 				<?php } ?>
-				
-			</div>
-            <?php if ($location->url) { ?>
+				<?php if ($location->url) { ?>
 					<dl class="dp-description">
 						<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_FIELD_URL_LABEL'); ?></dt>
 						<dd class="dp-description__description dp-location__url">
-							<a href="<?php echo $location->url; ?>" target="_blank" class="dp-link"><?php echo $location->url; ?></a>
+							<a href="<?php echo $location->url; ?>" class="dp-link"><?php echo $location->url; ?></a>
 						</dd>
 					</dl>
-				<?php } ?>      
+				<?php } ?>
+			</div>
 			<div class="dp-location__description">
-				<?php echo trim(implode("\n",
-					$this->app->triggerEvent('onContentBeforeDisplay', ['com_dpcalendar.location', &$location, &$params, 0]))); ?>
+				<?php echo trim(implode(
+					"\n",
+					$this->app->triggerEvent('onContentBeforeDisplay', ['com_dpcalendar.location', &$location, &$params, 0])
+				)); ?>
 				<?php echo JHTML::_('content.prepare', $location->description); ?>
 			</div>
 		</div>

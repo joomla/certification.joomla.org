@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package    DPCalendar
- * @author     Digital Peak http://www.digital-peak.com
- * @copyright  Copyright (C) 2007 - 2019 Digital Peak. All rights reserved.
- * @license    http://www.gnu.org/licenses/gpl.html GNU/GPL
+ * @package   DPCalendar
+ * @author    Digital Peak http://www.digital-peak.com
+ * @copyright Copyright (C) 2007 - 2020 Digital Peak. All rights reserved.
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 defined('_JEXEC') or die();
 
@@ -49,17 +49,24 @@ if ($calendarLink && $params->get('event_show_calendar', '1') == '2') {
 	<?php } ?>
 	<?php if ($this->event->locations && $params->get('event_show_location', '2')) { ?>
 		<dl class="dp-description">
-			<dt class="dp-description__label"><?php echo $this->translate('COM_DPCALENDAR_LOCATION'); ?></dt>
-			<dd class="dp-description__description">
-				<?php foreach ($this->event->locations as $location) { ?>
-					<?php $url = $params->get('event_show_location', '2') == '1' ?
-						$this->router->getLocationRoute($location) : '#dp-location-' . $location->id; ?>
-					<a href="<?php echo $url; ?>" class="dp-link">
-						<?php echo $location->title; ?>
-						<?php if ($this->roomTitles) { ?>
-							[<?php echo implode(', ', $this->roomTitles); ?>]
+			<dt class="dp-description__label">
+				<?php echo $this->translate('COM_DPCALENDAR_LOCATION' . (count($this->event->locations) > 1 ? 'S' : '')); ?>
+			</dt>
+			<dd class="dp-description__description dp-locations">
+				<?php foreach ($this->event->locations as $index => $location) { ?>
+					<span class="dp-location">
+						<?php $url = $params->get('event_show_location', '2') == '1' ?
+							$this->router->getLocationRoute($location) : '#dp-location-' . $location->id; ?>
+						<a href="<?php echo $url; ?>" class="dp-link dp-location__url">
+							<?php echo $location->title; ?>
+							<?php if (!empty($this->roomTitles[$location->id])) { ?>
+								[<?php echo implode(', ', $this->roomTitles[$location->id]); ?>]
+							<?php } ?>
+						</a>
+						<?php if ($index < count($this->event->locations) - 1) { ?>
+							<span class="dp-location__separator">,</span>
 						<?php } ?>
-					</a>
+					</span>
 				<?php } ?>
 			</dd>
 		</dl>
@@ -78,23 +85,20 @@ if ($calendarLink && $params->get('event_show_calendar', '1') == '2') {
 			</dd>
 		</dl>
 	<?php } ?>
-	
-	<div class="com-dpcalendar-event__event-text">
-		<?php echo $this->event->displayEvent->beforeDisplayContent; ?>
-	</div>
-	<?php echo $this->loadTemplate('tags'); ?>
-
-<!-- Added Buy Your Seat buy -->
-   <?php if ($this->event->url && $params->get('event_show_url', '1')) { ?>
+	<?php if ($this->event->url && $params->get('event_show_url', '1')) { ?>
 		<dl class="dp-description url">
-			<dt class="dp-description__label hide">Buy your seat</dt>
+		<dt class="dp-description__label hide">Buy your seat</dt>
 			<dd class="dp-description__description">
 				<?php $u = JUri::getInstance($this->event->url); ?>
 				<a href="<?php echo $this->event->url; ?>" class="btn btn-large btn-success"
 				   target="<?php echo $u->getHost() && JUri::getInstance()->getHost() != $u->getHost() ? '_blank' : ''; ?>">
-					Buy your seat
+				   Buy your seat
 				</a>
 			</dd>
 		</dl>
 	<?php } ?>
+	<div class="com-dpcalendar-event__event-text">
+		<?php echo $this->event->displayEvent->beforeDisplayContent; ?>
+	</div>
+	<?php echo $this->loadTemplate('tags'); ?>
 </div>
