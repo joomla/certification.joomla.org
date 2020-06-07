@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field name="certified_on" groupByFieldset="false" class="inputbox" format="%Y-%m-%d" timeformat="12"
+               filter="server_utc" translateformat="false" showtime="false" singleheader="false" todaybutton="false"
+               weeknumbers="false" filltable="false" type="calendar" required="true"
+               label="COM_CERTIFIED_USERS_SUBFORM_LBL_USER_CERTIFICATIONS_CERTIFIED_ON"
+               description="COM_CERTIFIED_USERS_SUBFORM_DESC_USER_CERTIFICATIONS_CERTIFIED_ON"
+               hint="COM_CERTIFIED_USERS_SUBFORM_LBL_USER_CERTIFICATIONS_CERTIFIED_ON"/>
+        <field name="certification" groupByFieldset="false" sql_select="id, name" sql_from="#__cud_certifications"
+               sql_join="" sql_where="state=1" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="name" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_SUBFORM_LBL_USER_CERTIFICATIONS_CERTIFICATION"
+               description="COM_CERTIFIED_USERS_SUBFORM_DESC_USER_CERTIFICATIONS_CERTIFICATION"
+               hint="COM_CERTIFIED_USERS_SUBFORM_LBL_USER_CERTIFICATIONS_CERTIFICATION"/>
+    </fieldset>
+</form>

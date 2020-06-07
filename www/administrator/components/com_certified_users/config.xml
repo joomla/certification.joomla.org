@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset label="COM_CERTIFIED_USERS" name="certified_users">
+        <field label="COM_CERTIFIED_USERS_TITLE" name="directory_title" type="text" default="Certified Users Directory" />
+        <field label="COM_CERTIFIED_USERS_INTRO" name="directory_intro" type="textarea"  />
+        <field label="COM_CERTIFIED_USERS_INTRO_IMAGE" name="directory_image" type="url" />
+        <field label="COM_CERTIFIED_USERS_INTRO_BADGE" name="directory_badge" type="url" />
+        <field label="COM_CERTIFIED_USERS_INTRO_LOGO" name="directory_logo" type="url" />
+
+        <field label="COM_CERTIFIED_USERS_DEFAULT_USER_IMAGE" name="default_user_image" type="url" />
+        <field name="user_field_image" groupByFieldset="false" sql_select="id, title" sql_from="#__fields"
+               sql_join="" sql_where="state=1 AND context='com_users.user'" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="title" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_FIELD_IMAGE"/>
+        <field name="user_field_city" groupByFieldset="false" sql_select="id, title" sql_from="#__fields"
+               sql_join="" sql_where="state=1 AND context='com_users.user'" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="title" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_FIELD_CITY"/>
+        <field name="user_field_country" groupByFieldset="false" sql_select="id, title" sql_from="#__fields"
+               sql_join="" sql_where="state=1 AND context='com_users.user'" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="title" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_FIELD_COUNTRY"/>
+        <field name="user_field_website" groupByFieldset="false" sql_select="id, title" sql_from="#__fields"
+               sql_join="" sql_where="state=1 AND context='com_users.user'" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="title" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_FIELD_WEBSITE"/>
+        <field name="user_field_email" groupByFieldset="false" sql_select="id, title" sql_from="#__fields"
+               sql_join="" sql_where="state=1 AND context='com_users.user'" sql_group="" sql_order="name ASC" sql_filter="" key_field="id"
+               value_field="title" type="sql" required="true"
+               label="COM_CERTIFIED_USERS_FIELD_EMAIL"/>
+    </fieldset>
+
+    <fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
+        <field name="rules" type="rules" component="com_certified_users" class="inputbox" filter="rules"
+               validate="rules" label="JCONFIG_PERMISSIONS_LABEL" section="component"/>
+    </fieldset>
+
+    <fieldset name="component">
+        <field name="save_history" type="radio" class="btn-group btn-group-yesno" default="0"
+               label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL" description="JGLOBAL_SAVE_HISTORY_OPTIONS_DESC">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+        <field name="history_limit" type="text" filter="integer" label="JGLOBAL_HISTORY_LIMIT_OPTIONS_LABEL"
+               description="JGLOBAL_HISTORY_LIMIT_OPTIONS_DESC" default="5"/>
+
+        <field
+                name="integration_sef"
+                type="note"
+                label="JGLOBAL_SEF_TITLE"
+        />
+
+        <field
+                name="sef_advanced"
+                type="radio"
+                class="btn-group btn-group-yesno btn-group-reversed"
+                default="0"
+                label="JGLOBAL_SEF_ADVANCED_LABEL"
+                description="JGLOBAL_SEF_ADVANCED_DESC"
+                filter="integer"
+        >
+            <option value="0">JGLOBAL_SEF_ADVANCED_LEGACY</option>
+            <option value="1">JGLOBAL_SEF_ADVANCED_MODERN</option>
+        </field>
+
+        <field
+                name="sef_ids"
+                type="radio"
+                class="btn-group btn-group-yesno"
+                default="0"
+                label="JGLOBAL_SEF_NOIDS_LABEL"
+                description="JGLOBAL_SEF_NOIDS_DESC"
+                showon="sef_advanced:1"
+                filter="integer"
+        >
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+    </fieldset>
+</config>

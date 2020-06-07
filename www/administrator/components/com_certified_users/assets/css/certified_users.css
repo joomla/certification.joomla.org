@@ -1,0 +1,40 @@
+.icon-48-certified_users {
+    background-image: url(../images/l_certified_users.png);
+    padding-left: 60px !important;
+}
+
+.icon-48-certified_user {
+    background-image: url(../images/l_certified_users.png);
+    padding-left: 60px !important;
+}
+
+.color-box-certified_users {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.icon-48-certifications {
+    background-image: url(../images/l_certifications.png);
+    padding-left: 60px !important;
+}
+
+.icon-48-certification {
+    background-image: url(../images/l_certifications.png);
+    padding-left: 60px !important;
+}
+
+.color-box-certifications {
+    float: left;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+
+.other-filters {
+    padding: 0 14px;
+}
