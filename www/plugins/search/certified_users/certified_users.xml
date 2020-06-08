@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="search">
+    <name>plg_search_certified_users</name>
+    <author>The Joomla Project</author>
+    <creationDate>2020-06-05</creationDate>
+    <copyright>2020 The Joomla Project</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>secretary@opensourcematters.org</authorEmail>
+    <authorUrl>https://joomla.org</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_SEARCH_COM_CERTIFIED_USERS_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="certified_users">certified_users.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <languages folder="languages">
+
+        <language tag="en-GB">en-GB/en-GB.plg_search_certified_users.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_search_certified_users.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+
+            <fieldset name="basic">
+                <field name="search_limit" type="text" default="50" size="5"
+                       description="PLG_SEARCH_COM_CERTIFIED_USERS_FIELD_SEARCHLIMIT_DESC"
+                       label="PLG_SEARCH_COM_CERTIFIED_USERS_FIELD_SEARCHLIMIT_LABEL"/>
+            </fieldset>
+
+        </fields>
+    </config>
+</extension>
