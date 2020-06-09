@@ -32,16 +32,16 @@ $document->addStyleSheet(Uri::root() . 'media/com_certified_users/css/styles.css
 
 ?>
 <div class="certification-listing">
-    <div class="listing-header">
-        <div class="listing-intro">
+    <div class="certification-listing-header">
+        <div class="certification-listing-intro">
             <h2><?php echo $this->params->get('directory_title'); ?></h2>
             <p><?php echo $this->params->get('directory_intro'); ?></p>
-            <div class="listing-header-images">
+            <div class="certification-listing-header-images">
                 <img src="<?php echo $this->params->get('directory_badge'); ?>">
                 <img src="<?php echo $this->params->get('directory_logo'); ?>">
             </div>
         </div>
-        <div class="listing-cert-image">
+        <div class="certification-listing-cert-image">
             <img src="<?php echo $this->params->get('directory_image'); ?>">
         </div>
     </div>
@@ -76,25 +76,25 @@ $document->addStyleSheet(Uri::root() . 'media/com_certified_users/css/styles.css
                     <tr class="row<?php echo $i % 2; ?>">
 
 
-                        <td rowspan="<?php echo count($item->certifications); ?>">
+                        <td class="cud-image" rowspan="<?php echo count($item->certifications); ?>">
                             <a href="<?php echo JRoute::_('index.php?option=com_certified_users&view=certified_user&id='.(int) $item->id); ?>">
-                                <img src="<?php echo $item->user_image; ?>"/>
+                                <img src="<?php echo $item->user_image; ?>" width="106" height="106"/>
                             </a>
                         </td>
-                        <td rowspan="<?php echo count($item->certifications); ?>">
+                        <td class="cud-name" rowspan="<?php echo count($item->certifications); ?>">
                             <a href="<?php echo JRoute::_('index.php?option=com_certified_users&view=certified_user&id='.(int) $item->id); ?>">
 								<?php echo $item->user_name; ?>
                             </a>
                         </td>
-                        <td rowspan="<?php echo count($item->certifications); ?>">
+                        <td class="cud-location" rowspan="<?php echo count($item->certifications); ?>">
 							<?php echo $item->user_location; ?>
                         </td>
-                        <td>
+                        <td class="cud-date">
 							<?php foreach ($item->certifications as $certification){
 								echo $certification->certified_on . '<br />';
 							} ?>
                         </td>
-                        <td>
+                        <td class="cud-exam">
 							<?php foreach ($item->certifications as $certification){
 								echo $certification->name . '<br />';
 							} ?>
