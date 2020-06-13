@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `#__cud_users` (
 `checked_out_time` DATETIME NOT NULL DEFAULT "0000-00-00 00:00:00",
 `created_by` INT(11)  NOT NULL ,
 `modified_by` INT(11)  NOT NULL ,
+`alias` VARCHAR(255) COLLATE utf8_bin NOT NULL ,
 `user` INT(11)  NOT NULL ,
 `certifications` TEXT NOT NULL ,
 PRIMARY KEY (`id`)

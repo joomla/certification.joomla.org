@@ -15,7 +15,8 @@ use Joomla\CMS\Component\Router\RouterView;
 use Joomla\CMS\Component\Router\Rules\StandardRules;
 use Joomla\CMS\Component\Router\Rules\NomenuRules;
 use Joomla\CMS\Component\Router\Rules\MenuRules;
-use \Joomla\CMS\Factory;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Categories\Categories;
 
 /**
  * Class Certified_usersRouter
@@ -66,6 +67,24 @@ class Certified_usersRouter extends RouterView
 	 */
 	public function getCertified_userSegment($id, $query)
 	{
+			if (!strpos($id, ':'))
+			{
+				$db = Factory::getDbo();
+				$dbquery = $db->getQuery(true);
+				$dbquery->select($dbquery->qn('alias'))
+					->from($dbquery->qn('#__cud_users'))
+					->where('id = ' . $dbquery->q($id));
+				$db->setQuery($dbquery);
+
+				$id .= ':' . $db->loadResult();
+			}
+
+			if ($this->noIDs)
+			{
+				list($void, $segment) = explode(':', $id, 2);
+
+				return array($void => $segment);
+			}
 		return array((int) $id => $id);
 	}
 
@@ -80,6 +99,17 @@ class Certified_usersRouter extends RouterView
 	 */
 	public function getCertified_userId($segment, $query)
 	{
+			if ($this->noIDs)
+			{
+				$db = JFactory::getDbo();
+				$dbquery = $db->getQuery(true);
+				$dbquery->select($dbquery->qn('id'))
+					->from($dbquery->qn('#__cud_users'))
+					->where('alias = ' . $dbquery->q($segment));
+				$db->setQuery($dbquery);
+
+				return (int) $db->loadResult();
+			}
 		return (int) $segment;
 	}
 }

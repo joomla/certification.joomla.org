@@ -60,6 +60,7 @@ $document->addStyleSheet(Uri::root() . 'media/com_certified_users/css/form.css')
     <input type="hidden" name="jform[checked_out_time]" value="<?php echo $this->item->checked_out_time; ?>"/>
 	<?php echo $this->form->renderField('created_by'); ?>
 	<?php echo $this->form->renderField('modified_by'); ?>
+	<input type="hidden" name="jform[alias]" value="<?php echo $this->item->alias; ?>" />
 	<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'certifieduser')); ?>
 	<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'certifieduser', JText::_('COM_CERTIFIED_USERS_TAB_CERTIFIEDUSER', true)); ?>
     <div class="row-fluid">

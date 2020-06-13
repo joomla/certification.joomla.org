@@ -38,6 +38,7 @@ class Certified_usersModelCertified_users extends \Joomla\CMS\MVC\Model\ListMode
 				'state', 'a.`state`',
 				'created_by', 'a.`created_by`',
 				'modified_by', 'a.`modified_by`',
+				'alias', 'a.`alias`',
 				'user', 'a.`user`',
 				'certifications', 'a.`certifications`',
 			);

@@ -19,7 +19,6 @@ JLoader::import('joomla.application.component.model');
 JLoader::import( 'certifications', JPATH_ADMINISTRATOR . '/components/com_certified_users/models');
 
 use \Joomla\CMS\Factory;
-use \Joomla\CMS\Filter\OutputFilter;
 use \Joomla\Utilities\ArrayHelper;
 use \Joomla\CMS\Language\Text;
 use \Joomla\CMS\Table\Table;
@@ -126,7 +125,13 @@ class Certified_usersModelCertified_user extends \Joomla\CMS\MVC\Model\ItemModel
 				$properties  = $table->getProperties(1);
 				$this->_item = ArrayHelper::toObject($properties, 'JObject');
 			}
+
+                if (empty($this->_item))
+				{
+					throw new Exception(Text::_('COM_CERTIFIED_USERS_ITEM_NOT_LOADED'), 404);
 		}
+            }
+
 
 
 		if (isset($this->_item->created_by))
@@ -168,8 +173,6 @@ class Certified_usersModelCertified_user extends \Joomla\CMS\MVC\Model\ItemModel
 
 			$this->_item->user_website = $userfieldvalues[$params_array['user_field_website']];
 			$this->_item->user_email = $userfieldvalues[$params_array['user_field_email']];
-
-			$this->_item->alias = OutputFilter::stringURLSafe($this->_item->user_name);
 
 		}
 
@@ -349,5 +352,14 @@ class Certified_usersModelCertified_user extends \Joomla\CMS\MVC\Model\ItemModel
 
 	}
 
-
+	public function getAliasFieldNameByView($view)
+	{
+		switch ($view)
+		{
+			case 'certified_user':
+			case 'certified_userform':
+				return 'alias';
+			break;
+		}
+	}
 }

@@ -20,6 +20,7 @@
                label="COM_CERTIFIED_USERS_FORM_LBL_CERTIFIED_USER_MODIFIED_BY"
                description="COM_CERTIFIED_USERS_FORM_DESC_CERTIFIED_USER_MODIFIED_BY" hidden="true"
                hint="COM_CERTIFIED_USERS_FORM_LBL_CERTIFIED_USER_MODIFIED_BY"/>
+        <field name="alias" type="text" class="inputbox" generator="user" label="COM_CERTIFIED_USERS_TEST_FORM_LBL_CERTIFIED_USER_ALIAS" description="COM_CERTIFIED_USERS_TEST_FORM_DESC_CERTIFIED_USER_ALIAS" hidden="true" hint="COM_CERTIFIED_USERS_TEST_FORM_LBL_CERTIFIED_USER_ALIAS"/>
         <field name="user" type="user" required="true" label="COM_CERTIFIED_USERS_FORM_LBL_CERTIFIED_USER_USER"
                description="COM_CERTIFIED_USERS_FORM_DESC_CERTIFIED_USER_USER"
                hint="COM_CERTIFIED_USERS_FORM_LBL_CERTIFIED_USER_USER"/>

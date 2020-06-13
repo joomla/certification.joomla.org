@@ -15,6 +15,7 @@ use \Joomla\CMS\Factory;
 use \Joomla\CMS\Access\Access;
 use \Joomla\CMS\Language\Text;
 use \Joomla\CMS\Table\Table;
+use \Joomla\CMS\Filter\OutputFilter;
 
 /**
  * certified_user Table class
@@ -93,6 +94,33 @@ class Certified_usersTablecertified_user extends \Joomla\CMS\Table\Table
 		{
 			$array['modified_by'] = JFactory::getUser()->id;
 		}
+
+		if (!empty($array['alias'])) {
+            $array['alias'] = OutputFilter::stringURLSafe(JFactory::getUser($array['user'])->name);
+		} else {
+            $array['alias'] = JFilterOutput::stringURLSafe(date('Y-m-d H:i:s'));
+        }
+
+		// Support for alias field: alias
+		/*if (empty($array['alias']))
+		{
+			if (empty($array['user']))
+			{
+				$array['alias'] = JFilterOutput::stringURLSafe(date('Y-m-d H:i:s'));
+			}
+			else
+			{
+				if(JFactory::getConfig()->get('unicodeslugs') == 1)
+				{
+					$array['alias'] = JFilterOutput::stringURLUnicodeSlug(trim($array['user']));
+				}
+				else
+				{
+					$array['alias'] = JFilterOutput::stringURLSafe(trim($array['user']));
+				}
+			}
+		}*/
+
 
 		if (isset($array['params']) && is_array($array['params']))
 		{
@@ -179,6 +207,15 @@ class Certified_usersTablecertified_user extends \Joomla\CMS\Table\Table
 			$this->ordering = self::getNextOrder();
 		}
 
+		// Check if alias is unique
+		if (!$this->isUnique('alias'))
+		{
+			$count = 0;
+			$currentAlias =  $this->alias;
+			while(!$this->isUnique('alias')){
+				$this->alias = $currentAlias . '-' . $count++;
+			}
+		}
 		// Check if user is unique
 		if (!$this->isUnique('user'))
 		{

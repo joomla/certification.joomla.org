@@ -11,7 +11,6 @@
 defined('_JEXEC') or die;
 
 use \Joomla\CMS\Factory;
-use \Joomla\CMS\Filter\OutputFilter;
 use \Joomla\CMS\Language\Text;
 
 jimport('joomla.application.component.modellist');
@@ -44,6 +43,7 @@ class Certified_usersModelCertified_users extends \Joomla\CMS\MVC\Model\ListMode
 				'state', 'a.state',
 				'created_by', 'a.created_by',
 				'modified_by', 'a.modified_by',
+				'alias', 'a.alias',
 				'user', 'a.user',
 				'certifications', 'a.certifications',
 			);
@@ -242,9 +242,6 @@ class Certified_usersModelCertified_users extends \Joomla\CMS\MVC\Model\ListMode
 
 				$item->user_website = $userfieldvalues[$params_array['user_field_website']];
 				$item->user_email = $userfieldvalues[$params_array['user_field_email']];
-
-				$item->alias = OutputFilter::stringURLSafe($item->user_name);
-
 			}
 
 			$item->certifications = json_decode($item->certifications);

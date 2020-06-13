@@ -82,10 +82,24 @@ class Certified_usersRulesLegacy implements RulesInterface
 		{
 			if ($view !== null)
 			{
+                if ($view == 'certified_user') {
+                    $model = Certified_usersHelpersCertified_users::getModel($view);
+                    if ($model !== null && method_exists($model, 'getItem')) {
+                        $item = $model->getItem($query['id']);
+                        $alias = $model->getAliasFieldNameByView($view);
+                        $segments[] = (isset($alias)) ? $item->$alias : $query['id'];
+                    }
+                }
+                if ($view == 'certified_users') {
+                    $segments[] = $query['id'];
+                }
+                if ($view == 'certification') {
 				$segments[] = $query['id'];
 			}
-			else
-			{
+                if ($view == 'certifications') {
+                    $segments[] = $query['id'];
+                }
+            } else {
 				$segments[] = $query['id'];
 			}
 
@@ -120,11 +134,26 @@ class Certified_usersRulesLegacy implements RulesInterface
 			if (is_numeric($segment))
 			{
 				$vars['id'] = $segment;
+            } else {
+
+                if ($vars['view'] == 'certified_users') {
+                    $vars['task'] = $vars['view'] . '.' . $segment;
+                }
+                if ($vars['view'] == 'certifications') {
+                    $vars['task'] = $vars['view'] . '.' . $segment;
 			}
-			else
-			{
+                if (empty($vars['id'])) {
+                    $id = null;
+                    if (method_exists($model, 'getItemIdByAlias')) {
+                        $id = $model->getItemIdByAlias(str_replace(':', '-', $segment));
+                    }
+                    if (!empty($id)) {
+                        $vars['id'] = $id;
+                    } else {
 				$vars['task'] = $vars['view'] . '.' . $segment;
 			}
 		}
 	}
+}
+    }
 }
