@@ -59,7 +59,7 @@ $document->addStyleSheet(Uri::root() . 'media/com_certified_users/css/styles.css
                         <strong><?php echo JText::_('COM_CERTIFIED_USERS_LBL_USER_NAME'); ?></strong>
                     </th>
                     <th>
-                        <strong><?php echo JHtml::_('grid.sort', 'COM_CERTIFIED_USERS_LBL_USER_LOCATION', 'a.location', $listDirn, $listOrder); ?></strong>
+                        <strong><?php echo JText::_('COM_CERTIFIED_USERS_LBL_USER_LOCATION'); ?></strong>
                     </th>
                     <th>
                         <strong><?php echo JText::_('COM_CERTIFIED_USERS_LBL_CERTIFIED_ON'); ?></strong>
