@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addrulepath="/administrator/components/com_jcpqm/models/rules"
+	addfieldpath="/administrator/components/com_jcpqm/models/fields"
+>
+	<fieldset name="details">
+		<!-- Default Fields. -->
+		<!-- Id Field. Type: Text (joomla) -->
+		<field
+			name="id"
+			type="text" class="readonly" label="JGLOBAL_FIELD_ID_LABEL"
+			description ="JGLOBAL_FIELD_ID_DESC" size="10" default="0"
+			readonly="true"
+		/>
+		<!-- Date Created Field. Type: Calendar (joomla) -->
+		<field
+			name="created"
+			type="calendar"
+			label="COM_JCPQM_QUESTION_CREATED_DATE_LABEL"
+			description="COM_JCPQM_QUESTION_CREATED_DATE_DESC"
+			size="22"
+			format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc"
+		/>
+		<!-- User Created Field. Type: User (joomla) -->
+		<field
+			name="created_by"
+			type="user"
+			label="COM_JCPQM_QUESTION_CREATED_BY_LABEL"
+			description="COM_JCPQM_QUESTION_CREATED_BY_DESC"
+		/>
+		<!-- Published Field. Type: List (joomla) -->
+		<field name="published" type="list" label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC" class="chzn-color-state"
+			filter="intval" size="1" default="1" >
+			<option value="1">
+				JPUBLISHED</option>
+			<option value="0">
+				JUNPUBLISHED</option>
+			<option value="2">
+				JARCHIVED</option>
+			<option value="-2">
+				JTRASHED</option>
+		</field>
+		<!-- Date Modified Field. Type: Calendar (joomla) -->
+		<field name="modified" type="calendar" class="readonly"
+			label="COM_JCPQM_QUESTION_MODIFIED_DATE_LABEL" description="COM_JCPQM_QUESTION_MODIFIED_DATE_DESC"
+			size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<!-- User Modified Field. Type: User (joomla) -->
+		<field name="modified_by" type="user"
+			label="COM_JCPQM_QUESTION_MODIFIED_BY_LABEL"
+			description="COM_JCPQM_QUESTION_MODIFIED_BY_DESC"
+			class="readonly"
+			readonly="true"
+			filter="unset"
+		/>
+		<!-- Access Field. Type: Accesslevel (joomla) -->
+		<field name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			description="JFIELD_ACCESS_DESC"
+			default="1"
+			required="false"
+		/>
+		<!-- Ordering Field. Type: Numbers (joomla) -->
+		<field
+			name="ordering"
+			type="number"
+			class="inputbox validate-ordering"
+			label="COM_JCPQM_QUESTION_ORDERING_LABEL"
+			description=""
+			default="0"
+			size="6"
+			required="false"
+		/>
+		<!-- Version Field. Type: Text (joomla) -->
+		<field
+			name="version"
+			type="text"
+			class="readonly"
+			label="COM_JCPQM_QUESTION_VERSION_LABEL"
+			description="COM_JCPQM_QUESTION_VERSION_DESC"
+			size="6"
+			readonly="true"
+			filter="unset"
+		/>
+		<!-- Metakey Field. Type: Textarea (joomla) -->
+		<field
+			name="metakey"
+			type="textarea"
+			label="JFIELD_META_KEYWORDS_LABEL"
+			description="JFIELD_META_KEYWORDS_DESC"
+			rows="3"
+			cols="30"
+		/>
+		<!-- Metadesc Field. Type: Textarea (joomla) -->
+		<field
+			name="metadesc"
+			type="textarea"
+			label="JFIELD_META_DESCRIPTION_LABEL"
+			description="JFIELD_META_DESCRIPTION_DESC"
+			rows="3"
+			cols="30"
+		/>
+		<!-- Dynamic Fields. -->
+		<!-- Question_title Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="question_title"
+			label="COM_JCPQM_QUESTION_QUESTION_TITLE_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_QUESTION_TITLE_DESCRIPTION"
+			required="true"
+			message="COM_JCPQM_QUESTION_QUESTION_TITLE_MESSAGE"
+			hint="COM_JCPQM_QUESTION_QUESTION_TITLE_HINT"
+		/>
+		<!-- Alias Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="alias"
+			label="COM_JCPQM_QUESTION_ALIAS_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_ALIAS_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_ALIAS_MESSAGE"
+			hint="COM_JCPQM_QUESTION_ALIAS_HINT"
+		/>
+		<!-- Exam Field. Type: Exam. (custom) -->
+		<field
+			type="exam"
+			name="exam"
+			label="COM_JCPQM_QUESTION_EXAM_LABEL"
+			description="COM_JCPQM_QUESTION_EXAM_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			default="0"
+			required="true"
+			onchange="onchangeExam(this)"
+			button="true"
+		/>
+		<!-- Catid Field. Type: Category. (joomla) -->
+		<field
+			type="category"
+			name="catid"
+			label="COM_JCPQM_QUESTION_CATID_LABEL"
+			extension="com_jcpqm.question"
+			required="true"
+			default=""
+			description="COM_JCPQM_QUESTION_CATID_DESCRIPTION"
+			class="inputbox"
+			published="1"
+			multiple="false"
+		/>
+		<!-- Questiontype Field. Type: Questiontype. (custom) -->
+		<field
+			type="questiontype"
+			name="questiontype"
+			label="COM_JCPQM_QUESTION_QUESTIONTYPE_LABEL"
+			class="list_class"
+			multiple="false"
+			default="0"
+			required="true"
+			button="true"
+		/>
+		<!-- Level Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="level"
+			label="COM_JCPQM_QUESTION_LEVEL_LABEL"
+			class="list_class"
+			multiple="false"
+			useglobal="false"
+			default="medium">
+			<!-- Option Set. -->
+			<option value="easy">
+				COM_JCPQM_QUESTION_EASY</option>
+			<option value="medium">
+				COM_JCPQM_QUESTION_MEDIUM</option>
+			<option value="hard">
+				COM_JCPQM_QUESTION_HARD</option>
+		</field>
+		<!-- Workstatus Field. Type: List. (joomla) -->
+		<field
+			type="list"
+			name="workstatus"
+			label="COM_JCPQM_QUESTION_WORKSTATUS_LABEL"
+			class="list_class"
+			multiple="false"
+			useglobal="aa"
+			default="0">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_JCPQM_QUESTION_NEW</option>
+			<option value="1">
+				COM_JCPQM_QUESTION_REJECTED</option>
+			<option value="2">
+				COM_JCPQM_QUESTION_DISCUSSING</option>
+			<option value="3">
+				COM_JCPQM_QUESTION_ONEST_REVIEW</option>
+			<option value="4">
+				COM_JCPQM_QUESTION_TWOND_REVIEW</option>
+			<option value="5">
+				COM_JCPQM_QUESTION_APPROVED</option>
+		</field>
+		<!-- Synced Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="synced"
+			label="COM_JCPQM_QUESTION_SYNCED_LABEL"
+			class="btn-group"
+			default="0"
+			readonly="true"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="0">
+				COM_JCPQM_QUESTION_NOT_LINKED</option>
+			<option value="1">
+				COM_JCPQM_QUESTION_SYNC_OK</option>
+			<option value="2">
+				COM_JCPQM_QUESTION_SYNC_REQUIRED</option>
+		</field>
+		<!-- Q_m3 Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="q_m3"
+			label="COM_JCPQM_QUESTION_Q_M3_LABEL"
+			size="10"
+			maxlength="50"
+			default="Some text"
+			description="COM_JCPQM_QUESTION_Q_M3_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_JCPQM_QUESTION_Q_M3_MESSAGE"
+			hint="COM_JCPQM_QUESTION_Q_M3_HINT"
+			autocomplete="on"
+		/>
+		<!-- Q_a3c Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="q_a3c"
+			label="COM_JCPQM_QUESTION_Q_A3C_LABEL"
+			description="COM_JCPQM_QUESTION_Q_A3C_DESCRIPTION"
+			class="btn-group btn-group-yesno"
+			default="0"
+			readonly="false"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="1">
+				COM_JCPQM_QUESTION_CORRECT</option>
+			<option value="0">
+				COM_JCPQM_QUESTION_INCORRECT</option>
+		</field>
+		<!-- Q_a3 Field. Type: Editor. (joomla) -->
+		<field
+			type="editor"
+			name="q_a3"
+			label="COM_JCPQM_QUESTION_Q_A3_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_Q_A3_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_Q_A3_MESSAGE"
+			required="true"
+		/>
+		<!-- Q_m1 Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="q_m1"
+			label="COM_JCPQM_QUESTION_Q_M1_LABEL"
+			size="10"
+			maxlength="50"
+			default="Some text"
+			description="COM_JCPQM_QUESTION_Q_M1_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_JCPQM_QUESTION_Q_M1_MESSAGE"
+			hint="COM_JCPQM_QUESTION_Q_M1_HINT"
+			autocomplete="on"
+		/>
+		<!-- Q_h3 Field. Type: Note. A None Database Field. (joomla) -->
+		<field type="note" name="q_h3" description="COM_JCPQM_QUESTION_Q_H3_DESCRIPTION" class="alert alert-info q_h3" />
+		<!-- Q_a1c Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="q_a1c"
+			label="COM_JCPQM_QUESTION_Q_A1C_LABEL"
+			description="COM_JCPQM_QUESTION_Q_A1C_DESCRIPTION"
+			class="btn-group btn-group-yesno"
+			default="0"
+			readonly="false"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="1">
+				COM_JCPQM_QUESTION_CORRECT</option>
+			<option value="0">
+				COM_JCPQM_QUESTION_INCORRECT</option>
+		</field>
+		<!-- Q_a1 Field. Type: Editor. (joomla) -->
+		<field
+			type="editor"
+			name="q_a1"
+			label="COM_JCPQM_QUESTION_Q_A1_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_Q_A1_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_Q_A1_MESSAGE"
+			required="true"
+		/>
+		<!-- Q_a4 Field. Type: Editor. (joomla) -->
+		<field
+			type="editor"
+			name="q_a4"
+			label="COM_JCPQM_QUESTION_Q_A4_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_Q_A4_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_Q_A4_MESSAGE"
+			required="true"
+		/>
+		<!-- Shikaquestion Field. Type: Shikaquestion. (custom) -->
+		<field
+			type="shikaquestion"
+			name="shikaquestion"
+			label="COM_JCPQM_QUESTION_SHIKAQUESTION_LABEL"
+			description="COM_JCPQM_QUESTION_SHIKAQUESTION_DESCRIPTION"
+			class="list_class"
+			multiple="false"
+			default="0"
+			required="false"
+			button="true"
+		/>
+		<!-- Q_a2 Field. Type: Editor. (joomla) -->
+		<field
+			type="editor"
+			name="q_a2"
+			label="COM_JCPQM_QUESTION_Q_A2_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_Q_A2_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_Q_A2_MESSAGE"
+			required="true"
+		/>
+		<!-- Q_h4 Field. Type: Note. A None Database Field. (joomla) -->
+		<field type="note" name="q_h4" description="COM_JCPQM_QUESTION_Q_H4_DESCRIPTION" class="alert alert-info q_h4" />
+		<!-- Q_h2 Field. Type: Note. A None Database Field. (joomla) -->
+		<field type="note" name="q_h2" description="COM_JCPQM_QUESTION_Q_H2_DESCRIPTION" class="alert alert-info q_h2" />
+		<!-- Catidplus Field. Type: Categoryplus. (custom) -->
+		<field
+			type="categoryplus"
+			name="catidplus"
+			label="COM_JCPQM_QUESTION_CATIDPLUS_LABEL"
+			extension="com_jcpqm.question"
+			required="true"
+			default=""
+			description="COM_JCPQM_QUESTION_CATIDPLUS_DESCRIPTION"
+			class="inputbox"
+			published="1"
+			multiple="false"
+			rootpath="published"
+			level="3"
+			levelselector=">"
+			showhiddenparrents="true"
+		/>
+		<!-- Q_q Field. Type: Editor. (joomla) -->
+		<field
+			type="editor"
+			name="q_q"
+			label="COM_JCPQM_QUESTION_Q_Q_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_Q_Q_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_Q_Q_MESSAGE"
+			required="true"
+		/>
+		<!-- Note Field. Type: Textarea. (joomla) -->
+		<field
+			type="textarea"
+			name="note"
+			label="COM_JCPQM_QUESTION_NOTE_LABEL"
+			rows="10"
+			cols="5"
+			default=""
+			description="COM_JCPQM_QUESTION_NOTE_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_NOTE_MESSAGE"
+			hint="COM_JCPQM_QUESTION_NOTE_HINT"
+		/>
+		<!-- Uuid Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="uuid"
+			label="COM_JCPQM_QUESTION_UUID_LABEL"
+			default=""
+			description="COM_JCPQM_QUESTION_UUID_DESCRIPTION"
+			message="COM_JCPQM_QUESTION_UUID_MESSAGE"
+			hint="COM_JCPQM_QUESTION_UUID_HINT"
+		/>
+		<!-- Q_a2c Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="q_a2c"
+			label="COM_JCPQM_QUESTION_Q_A2C_LABEL"
+			description="COM_JCPQM_QUESTION_Q_A2C_DESCRIPTION"
+			class="btn-group btn-group-yesno"
+			default="0"
+			readonly="false"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="1">
+				COM_JCPQM_QUESTION_CORRECT</option>
+			<option value="0">
+				COM_JCPQM_QUESTION_INCORRECT</option>
+		</field>
+		<!-- Not_required Field. Type: Hidden. (joomla) -->
+		<field
+			type="hidden"
+			name="not_required"
+			default="[]"
+		/>
+		<!-- Q_m2 Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="q_m2"
+			label="COM_JCPQM_QUESTION_Q_M2_LABEL"
+			size="10"
+			maxlength="50"
+			default="Some text"
+			description="COM_JCPQM_QUESTION_Q_M2_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_JCPQM_QUESTION_Q_M2_MESSAGE"
+			hint="COM_JCPQM_QUESTION_Q_M2_HINT"
+			autocomplete="on"
+		/>
+		<!-- Q_htf Field. Type: Note. A None Database Field. (joomla) -->
+		<field type="note" name="q_htf" description="COM_JCPQM_QUESTION_Q_HTF_DESCRIPTION" class="alert alert-info q_htf" />
+		<!-- Q_a4c Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="q_a4c"
+			label="COM_JCPQM_QUESTION_Q_A4C_LABEL"
+			description="COM_JCPQM_QUESTION_Q_A4C_DESCRIPTION"
+			class="btn-group btn-group-yesno"
+			default="0"
+			readonly="false"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="1">
+				COM_JCPQM_QUESTION_CORRECT</option>
+			<option value="0">
+				COM_JCPQM_QUESTION_INCORRECT</option>
+		</field>
+		<!-- Q_atf Field. Type: Radio. (joomla) -->
+		<field
+			type="radio"
+			name="q_atf"
+			label="COM_JCPQM_QUESTION_Q_ATF_LABEL"
+			description="COM_JCPQM_QUESTION_Q_ATF_DESCRIPTION"
+			class="btn-group btn-group-yesno"
+			default="1"
+			readonly="false"
+			disabled="false">
+			<!-- Option Set. -->
+			<option value="1">
+				COM_JCPQM_QUESTION_TRUE</option>
+			<option value="0">
+				COM_JCPQM_QUESTION_FALSE</option>
+		</field>
+		<!-- Q_m4 Field. Type: Text. (joomla) -->
+		<field
+			type="text"
+			name="q_m4"
+			label="COM_JCPQM_QUESTION_Q_M4_LABEL"
+			size="10"
+			maxlength="50"
+			default="Some text"
+			description="COM_JCPQM_QUESTION_Q_M4_DESCRIPTION"
+			class="text_area"
+			readonly="true"
+			disabled="false"
+			required="false"
+			filter="STRING"
+			message="COM_JCPQM_QUESTION_Q_M4_MESSAGE"
+			hint="COM_JCPQM_QUESTION_Q_M4_HINT"
+			autocomplete="on"
+		/>
+		<!-- Q_h1 Field. Type: Note. A None Database Field. (joomla) -->
+		<field type="note" name="q_h1" description="COM_JCPQM_QUESTION_Q_H1_DESCRIPTION" class="alert alert-info q_h1" />
+	</fieldset>
+
+	<!-- Metadata Fields. -->
+	<fields name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+		<fieldset name="vdmmetadata"
+			label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+			<!-- Robots Field. Type: List (joomla) -->
+			<field name="robots"
+				type="list"
+				label="JFIELD_METADATA_ROBOTS_LABEL"
+				description="JFIELD_METADATA_ROBOTS_DESC" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+				<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+				<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+				<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+			</field>
+			<!-- Author Field. Type: Text (joomla) -->
+			<field name="author"
+				type="text"
+				label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC"
+				size="20"
+			/>
+			<!-- Rights Field. Type: Textarea (joomla) -->
+			<field name="rights" type="textarea" label="JFIELD_META_RIGHTS_LABEL"
+				description="JFIELD_META_RIGHTS_DESC" required="false" filter="string"
+				cols="30" rows="2"
+			/>
+		</fieldset>
+	</fields>
+	
+	<!-- Access Control Fields. -->
+	<fieldset name="accesscontrol">
+		<!-- Asset Id Field. Type: Hidden (joomla) -->
+		<field
+			name="asset_id"
+			type="hidden"
+			filter="unset"
+		/>
+		<!-- Rules Field. Type: Rules (joomla) -->
+		<field
+			name="rules"
+			type="rules"
+			label="Permissions in relation to this question"
+			translate_label="false"
+			filter="rules"
+			validate="rules"
+			class="inputbox"
+			component="com_jcpqm"
+			section="question"
+		/>
+	</fieldset>
+</form>

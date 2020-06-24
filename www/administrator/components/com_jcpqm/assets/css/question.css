@@ -1,0 +1,86 @@
+/**
+ * @package    Joomla Certification Program, question manager
+ *
+ * @author     marco dings <http://certification.joomla.org>
+ * @copyright  Copyright (C) 2015. All Rights Reserved
+ * @license    GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/* CSS Document */
+
+
+/**
+ * @package    Joomla Certification Program, question manager
+ *
+ * @author     marco dings <http://certification.joomla.org>
+ * @copyright  Copyright (C) 2015. All Rights Reserved
+ * @license    GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+/* CSS Document */
+#jform_shikaquestion_chzn,
+#jform_exam_chzn,
+#jform_catid_chzn
+{
+    width: 375px !important;
+}
+
+#jform_q_q,
+#jform_q_a1,
+#jform_q_a2,
+#jform_q_a3,
+#jform_q_a4,
+#jform_q_q_ifr,
+#jform_q_a1_ifr,
+#jform_q_a2_ifr,
+#jform_q_a3_ifr,
+#jform_q_a4_ifr {
+    height:100px !important;
+}
+
+.form-horizontal .control-group.control-wrapper-q_h1,
+.form-horizontal .control-group.control-wrapper-q_h2,
+.form-horizontal .control-group.control-wrapper-q_h3,
+.form-horizontal .control-group.control-wrapper-q_h4 {
+    margin-bottom: 0px;
+}
+
+.control-group.control-wrapper-q_h3,
+.control-group.control-wrapper-q_h4
+{
+    padding-top: 18px
+}
+
+
+.control-wrapper-q_q .toggle-editor,
+
+.control-wrapper-q_a1 .toggle-editor,
+.control-wrapper-q_a2 .toggle-editor,
+.control-wrapper-q_a3 .toggle-editor,
+.control-wrapper-q_a4 .toggle-editor,
+
+.control-wrapper-q_a1c .control-label,
+.control-wrapper-q_a2c .control-label,
+.control-wrapper-q_a3c .control-label,
+.control-wrapper-q_a4c .control-label,
+
+.control-wrapper-q_a1 .control-label,
+.control-wrapper-q_a2 .control-label,
+.control-wrapper-q_a3 .control-label,
+.control-wrapper-q_a4 .control-label {
+    display:    none;
+}
+
+.form-horizontal .control-wrapper-q_a1c .controls,
+.form-horizontal .control-wrapper-q_a2c .controls,
+.form-horizontal .control-wrapper-q_a3c .controls,
+.form-horizontal .control-wrapper-q_a4c .controls,
+
+.form-horizontal .control-wrapper-q_a1 .controls,
+.form-horizontal .control-wrapper-q_a2 .controls,
+.form-horizontal .control-wrapper-q_a3 .controls,
+.form-horizontal .control-wrapper-q_a4 .controls {
+    margin-left: 0px;
+}
+
+

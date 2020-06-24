@@ -1,0 +1,23 @@
+/**
+ * @package    Joomla Certification Program, question manager
+ *
+ * @author     marco dings <http://certification.joomla.org>
+ * @copyright  Copyright (C) 2015. All Rights Reserved
+ * @license    GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+Joomla.submitbutton = function(task)
+{
+	if (task == ''){
+		return false;
+	} else { 
+		var action = task.split('.');
+		if (action[1] == 'cancel' || action[1] == 'close' || document.formvalidator.isValid(document.getElementById("adminForm"))){
+			Joomla.submitform(task, document.getElementById("adminForm"));
+			return true;
+		} else {
+			alert(Joomla.JText._('exam, some values are not acceptable.','Some values are unacceptable'));
+			return false;
+		}
+	}
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<access component="com_jcpqm">
+	<section name="component">
+		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+		<action name="core.options" title="JACTION_OPTIONS" description="JACTION_OPTIONS_COMPONENT_DESC" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+		<action name="core.export" title="COM_JCPQM_EXPORT_DATA" description="COM_JCPQM_EXPORT_DATA_DESC" />
+		<action name="core.import" title="COM_JCPQM_IMPORT_DATA" description="COM_JCPQM_IMPORT_DATA_DESC" />
+		<action name="core.batch" title="COM_JCPQM_USE_BATCH" description="COM_JCPQM_USE_BATCH_DESC" />
+		<action name="core.version" title="COM_JCPQM_EDIT_VERSIONS" description="COM_JCPQM_EDIT_VERSIONS_DESC" />
+		<action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC" />
+		<action name="core.delete" title="JACTION_DELETE" description="JACTION_DELETE_COMPONENT_DESC" />
+		<action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC" />
+		<action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_ACCESS_EDITSTATE_DESC" />
+		<action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC" />
+		<action name="core.edit.created_by" title="COM_JCPQM_EDIT_CREATED_BY" description="COM_JCPQM_EDIT_CREATED_BY_DESC" />
+		<action name="core.edit.created" title="COM_JCPQM_EDIT_CREATED_DATE" description="COM_JCPQM_EDIT_CREATED_DATE_DESC" />
+		<action name="exam.dowload_translation" title="COM_JCPQM_EXAM_DOWLOAD_TRANSLATION_BUTTON_ACCESS" description="COM_JCPQM_EXAM_DOWLOAD_TRANSLATION_BUTTON_ACCESS_DESC" />
+		<action name="exam.generate_ini" title="COM_JCPQM_EXAM_GENERATE_INI_BUTTON_ACCESS" description="COM_JCPQM_EXAM_GENERATE_INI_BUTTON_ACCESS_DESC" />
+		<action name="exam.get_inifile" title="COM_JCPQM_EXAM_GET_INIFILE_BUTTON_ACCESS" description="COM_JCPQM_EXAM_GET_INIFILE_BUTTON_ACCESS_DESC" />
+		<action name="exam.push_to_crowdin" title="COM_JCPQM_EXAM_PUSH_TO_CROWDIN_BUTTON_ACCESS" description="COM_JCPQM_EXAM_PUSH_TO_CROWDIN_BUTTON_ACCESS_DESC" />
+		<action name="exam.access" title="COM_JCPQM_EXAMS_ACCESS" description="COM_JCPQM_EXAMS_ACCESS_DESC" />
+		<action name="exam.batch" title="COM_JCPQM_EXAMS_BATCH_USE" description="COM_JCPQM_EXAMS_BATCH_USE_DESC" />
+		<action name="exam.create" title="COM_JCPQM_EXAMS_CREATE" description="COM_JCPQM_EXAMS_CREATE_DESC" />
+		<action name="exam.dashboard_list" title="COM_JCPQM_EXAMS_DASHBOARD_LIST" description="COM_JCPQM_EXAMS_DASHBOARD_LIST_DESC" />
+		<action name="exam.delete" title="COM_JCPQM_EXAMS_DELETE" description="COM_JCPQM_EXAMS_DELETE_DESC" />
+		<action name="exam.edit" title="COM_JCPQM_EXAMS_EDIT" description="COM_JCPQM_EXAMS_EDIT_DESC" />
+		<action name="exam.edit.own" title="COM_JCPQM_EXAMS_EDIT_OWN" description="COM_JCPQM_EXAMS_EDIT_OWN_DESC" />
+		<action name="exam.edit.state" title="COM_JCPQM_EXAMS_EDIT_STATE" description="COM_JCPQM_EXAMS_EDIT_STATE_DESC" />
+		<action name="exam.version" title="COM_JCPQM_EXAMS_EDIT_VERSION" description="COM_JCPQM_EXAMS_EDIT_VERSION_DESC" />
+		<action name="exam.export" title="COM_JCPQM_EXAMS_EXPORT" description="COM_JCPQM_EXAMS_EXPORT_DESC" />
+		<action name="exam.import" title="COM_JCPQM_EXAMS_IMPORT" description="COM_JCPQM_EXAMS_IMPORT_DESC" />
+		<action name="exam.submenu" title="COM_JCPQM_EXAMS_SUBMENU" description="COM_JCPQM_EXAMS_SUBMENU_DESC" />
+		<action name="question.push_to_shika" title="COM_JCPQM_QUESTION_PUSH_TO_SHIKA_BUTTON_ACCESS" description="COM_JCPQM_QUESTION_PUSH_TO_SHIKA_BUTTON_ACCESS_DESC" />
+		<action name="question.access" title="COM_JCPQM_QUESTIONS_ACCESS" description="COM_JCPQM_QUESTIONS_ACCESS_DESC" />
+		<action name="question.batch" title="COM_JCPQM_QUESTIONS_BATCH_USE" description="COM_JCPQM_QUESTIONS_BATCH_USE_DESC" />
+		<action name="question.create" title="COM_JCPQM_QUESTIONS_CREATE" description="COM_JCPQM_QUESTIONS_CREATE_DESC" />
+		<action name="question.dashboard_add" title="COM_JCPQM_QUESTIONS_DASHBOARD_ADD" description="COM_JCPQM_QUESTIONS_DASHBOARD_ADD_DESC" />
+		<action name="question.dashboard_list" title="COM_JCPQM_QUESTIONS_DASHBOARD_LIST" description="COM_JCPQM_QUESTIONS_DASHBOARD_LIST_DESC" />
+		<action name="question.delete" title="COM_JCPQM_QUESTIONS_DELETE" description="COM_JCPQM_QUESTIONS_DELETE_DESC" />
+		<action name="question.edit" title="COM_JCPQM_QUESTIONS_EDIT" description="COM_JCPQM_QUESTIONS_EDIT_DESC" />
+		<action name="question.edit.own" title="COM_JCPQM_QUESTIONS_EDIT_OWN" description="COM_JCPQM_QUESTIONS_EDIT_OWN_DESC" />
+		<action name="question.edit.state" title="COM_JCPQM_QUESTIONS_EDIT_STATE" description="COM_JCPQM_QUESTIONS_EDIT_STATE_DESC" />
+		<action name="question.version" title="COM_JCPQM_QUESTIONS_EDIT_VERSION" description="COM_JCPQM_QUESTIONS_EDIT_VERSION_DESC" />
+		<action name="question.export" title="COM_JCPQM_QUESTIONS_EXPORT" description="COM_JCPQM_QUESTIONS_EXPORT_DESC" />
+		<action name="question.import" title="COM_JCPQM_QUESTIONS_IMPORT" description="COM_JCPQM_QUESTIONS_IMPORT_DESC" />
+		<action name="question.submenu" title="COM_JCPQM_QUESTIONS_SUBMENU" description="COM_JCPQM_QUESTIONS_SUBMENU_DESC" />
+		<action name="questiontype.access" title="COM_JCPQM_QUESTIONTYPES_ACCESS" description="COM_JCPQM_QUESTIONTYPES_ACCESS_DESC" />
+		<action name="questiontype.batch" title="COM_JCPQM_QUESTIONTYPES_BATCH_USE" description="COM_JCPQM_QUESTIONTYPES_BATCH_USE_DESC" />
+		<action name="questiontype.version" title="COM_JCPQM_QUESTIONTYPES_EDIT_VERSION" description="COM_JCPQM_QUESTIONTYPES_EDIT_VERSION_DESC" />
+		<action name="questiontype.export" title="COM_JCPQM_QUESTIONTYPES_EXPORT" description="COM_JCPQM_QUESTIONTYPES_EXPORT_DESC" />
+		<action name="questiontype.import" title="COM_JCPQM_QUESTIONTYPES_IMPORT" description="COM_JCPQM_QUESTIONTYPES_IMPORT_DESC" />
+	</section>
+	<section name="question">
+		<action name="question.edit" title="COM_JCPQM_QUESTIONS_EDIT" description="COM_JCPQM_QUESTIONS_EDIT_DESC" />
+		<action name="question.edit.own" title="COM_JCPQM_QUESTIONS_EDIT_OWN" description="COM_JCPQM_QUESTIONS_EDIT_OWN_DESC" />
+		<action name="question.edit.state" title="COM_JCPQM_QUESTIONS_EDIT_STATE" description="COM_JCPQM_QUESTIONS_EDIT_STATE_DESC" />
+		<action name="question.create" title="COM_JCPQM_QUESTIONS_CREATE" description="COM_JCPQM_QUESTIONS_CREATE_DESC" />
+		<action name="question.delete" title="COM_JCPQM_QUESTIONS_DELETE" description="COM_JCPQM_QUESTIONS_DELETE_DESC" />
+		<action name="question.access" title="COM_JCPQM_QUESTIONS_ACCESS" description="COM_JCPQM_QUESTIONS_ACCESS_DESC" />
+		<action name="question.version" title="COM_JCPQM_QUESTIONS_EDIT_VERSION" description="COM_JCPQM_QUESTIONS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="exam">
+		<action name="exam.edit" title="COM_JCPQM_EXAMS_EDIT" description="COM_JCPQM_EXAMS_EDIT_DESC" />
+		<action name="exam.edit.own" title="COM_JCPQM_EXAMS_EDIT_OWN" description="COM_JCPQM_EXAMS_EDIT_OWN_DESC" />
+		<action name="exam.edit.state" title="COM_JCPQM_EXAMS_EDIT_STATE" description="COM_JCPQM_EXAMS_EDIT_STATE_DESC" />
+		<action name="exam.create" title="COM_JCPQM_EXAMS_CREATE" description="COM_JCPQM_EXAMS_CREATE_DESC" />
+		<action name="exam.delete" title="COM_JCPQM_EXAMS_DELETE" description="COM_JCPQM_EXAMS_DELETE_DESC" />
+		<action name="exam.access" title="COM_JCPQM_EXAMS_ACCESS" description="COM_JCPQM_EXAMS_ACCESS_DESC" />
+		<action name="exam.version" title="COM_JCPQM_EXAMS_EDIT_VERSION" description="COM_JCPQM_EXAMS_EDIT_VERSION_DESC" />
+	</section>
+	<section name="questiontype">
+		<action name="questiontype.version" title="COM_JCPQM_QUESTIONTYPES_EDIT_VERSION" description="COM_JCPQM_QUESTIONTYPES_EDIT_VERSION_DESC" />
+	</section>
+	<section name="category.questions">
+		<action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC" />
+		<action name="core.delete" title="JACTION_DELETE" description="COM_CATEGORIES_ACCESS_DELETE_DESC" />
+		<action name="core.edit" title="JACTION_EDIT" description="COM_CATEGORIES_ACCESS_EDIT_DESC" />
+		<action name="core.edit.state" title="JACTION_EDITSTATE" description="COM_CATEGORIES_ACCESS_EDITSTATE_DESC" />
+		<action name="core.edit.own" title="JACTION_EDITOWN" description="COM_CATEGORIES_ACCESS_EDITOWN_DESC" />
+	</section>
+</access>

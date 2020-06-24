@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.2" method="upgrade">
+	<name>COM_JCPQM</name>
+	<creationDate>9th July, 2019</creationDate>
+	<author>marco dings</author>
+	<authorEmail>marco.dings@community.joomla.org</authorEmail>
+	<authorUrl>http://certification.joomla.org</authorUrl>
+	<copyright>Copyright (C) 2015. All Rights Reserved</copyright>
+	<license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>1.0.37</version>
+	<description><![CDATA[
+		<h1>JCP Question Manager (v.1.0.37)</h1>
+		<div style="clear: both;"></div>
+		<p></p>
+		<p>Created by <a href="http://certification.joomla.org" target="_blank">marco dings</a><br /><small>Development started 8th June, 2019</small></p>
+	]]></description>
+
+	<!-- Runs on install; New in Joomla 1.5 -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<!-- Runs on uninstall; New in Joomla 1.5 -->
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<!-- Runs on install/uninstall/update; New in Joomla 2.5 -->
+	<scriptfile>script.php</scriptfile>
+
+	<media destination="com_jcpqm" folder="media">
+		<filename>index.html</filename>
+		<folder>js</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+	</media>
+
+	<!-- Update Schema; New in Joomla 2.5 -->
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql/</schemapath>
+		</schemas>
+	</update>
+
+	
+
+	
+
+	<administration>
+		<menu>COM_JCPQM_MENU</menu>
+		<submenu>
+			<!-- Instead of link you can specify individual link attributes -->
+			<menu option="com_jcpqm" view="questions">COM_JCPQM_MENU_QUESTIONS</menu>
+			<menu option="com_jcpqm" view="exams">COM_JCPQM_MENU_EXAMS</menu>
+			<menu option="com_jcpqm" view="questiontypes">COM_JCPQM_MENU_QUESTIONTYPES</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>jcpqm.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>jcpqm.php</filename>
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<folder>layouts</folder>
+			<folder>jcpqm_vendor</folder>
+			<folder>jcpqm_crowdin</folder>
+		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_jcpqm.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_jcpqm.sys.ini</language>
+		</languages>
+
+	</administration>
+</extension>
