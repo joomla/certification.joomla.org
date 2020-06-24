@@ -12,3 +12,6 @@ Certification Website Repository
   * https://certification.joomla.org/exams/joomla-learning-partners-locations
   * https://certification.joomla.org/exams/joomla-user-groups-locations
 
+## JCP Question Manager
+The code is stored in this repository, but any change needs to be added to the Component Builder suite as well.
+This is required to be able to regenerate the component with new default joomla features and not losing manual changes.
