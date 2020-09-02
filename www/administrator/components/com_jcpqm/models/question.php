@@ -223,7 +223,7 @@ public function pushToShika( $questionId )
 	$data["alias"]       = $jcpqmQuestion->uuid;
 
 	$data["ideal_time"]  = "";
-    $row = (int)$jcpqmQuestion->published == STATUS_PUBLISHED ? '"ToShika' : "ToShikaUnPub";
+    $row = (int)$jcpqmQuestion->published == STATUS_PUBLISHED ? "ToShika" : "ToShikaUnPub";
 	$data["category_id"] = $categoryMapping[$row][(int)$jcpqmQuestion->catid];
 	$data["level"]       = $jcpqmQuestion->level;
 //created_by
