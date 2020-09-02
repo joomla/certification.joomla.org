@@ -211,11 +211,12 @@ public function pushToShika( $questionId )
 
 	$data["gradingtype"]="quiz";
 
-	$data["type"]="radio";
-	if ( in_array( (int)$jcpqmQuestion->questiontype,array(QT_MULTIPLE_CHOICE_3,QT_MULTIPLE_CHOICE_4)))
+	$data["type"]="checkbox";
+	if ( in_array( (int)$jcpqmQuestion->questiontype,array(QT_TRUE_FALSE,QT_MULTIPLE_CHOICE_3,QT_MULTIPLE_CHOICE_4)))
 	{
-		$data["type"]="checkbox";
+		$data["type"]="radio";
 	}
+
 	$JtextBase=sprintf("%s_%s_%s",'J3-ADMIN-2019',"CONFIGURATION",strtoupper($jcpqmQuestion->uuid));
 	$data["title"]       = $JtextBase . "Q";
 	$data["description"] = $jcpqmQuestion->q_q;
