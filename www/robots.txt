@@ -23,15 +23,9 @@ Disallow: /bin/
 Disallow: /cache/
 Disallow: /cgi-bin/
 Disallow: /cli/
-
 Disallow: /includes/
 Disallow: /language/
 Disallow: /layouts/
 Disallow: /libraries/
 Disallow: /logs/
-
-
-
-
-
 Disallow: /tmp/
